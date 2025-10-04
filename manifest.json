@@ -1,0 +1,11 @@
+{
+	"id": "latex-compiler",
+	"name": "Obsidian LaTeX Compiler",
+	"version": "0.1.0",
+	"minAppVersion": "1.7.7",
+	"description": "Allows to extract and compile LaTeX documents from Obsidian.",
+	"author": "Alexander Bloemer",
+	"authorUrl": "https://alexander-bloemer.de/",
+	"fundingUrl": "",
+	"isDesktopOnly": true
+}
