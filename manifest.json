@@ -1,6 +1,6 @@
 {
 	"id": "latex-compiler",
-	"name": "Obsidian LaTeX Compiler",
+	"name": "LaTeX Compiler",
 	"version": "0.1.0",
 	"minAppVersion": "1.7.7",
 	"description": "Allows to extract and compile LaTeX documents from Obsidian.",
