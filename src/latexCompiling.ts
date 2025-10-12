@@ -19,7 +19,8 @@ export async function compileLatex(outputName: string, projectName: string, sett
 	if (vaultPath == null) {
 		throw new Error('The plugin does not work on the mobile version (yet). Sorry!')
 	}
-	const pluginPath = `${vaultPath}/.obsidian/plugins/obsidian-latex`
+	const configDirectory = this.app.vault.configDirectory
+	const pluginPath = `${vaultPath}/${configDirectory}/plugins/obsidian-latex`
 	const compilePath = `${vaultPath}/${settings.projectsFolder}/${projectName}/compile`
 
 	const cd = `cd ${compilePath}`
