@@ -54,7 +54,7 @@ export default class LatexCompiler extends Plugin {
  */
 async function runCompiler(settings: LatexCompilerSettings) {
 	try {
-		const [projectNumber, projectName] = await getProjectNameAndNumber(settings, this.app)
+		const [projectNumber, projectName] = getProjectNameAndNumber(settings, this.app)
 		const outputName: string = await extractLatex(projectName, projectNumber, settings)
 		await compileLatex(outputName, projectName, settings)
 	}

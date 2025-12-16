@@ -23,18 +23,14 @@ interface OutputSpecification {
  * @return The name of the output file.
  */
 export async function extractLatex(projectName: string, projectNumber: string, settings: LatexCompilerSettings): Promise<string> {
-	try{
-		const mainPath: string = 'compile/'+projectNumber+'_main'
-		const outputSpecification: OutputSpecification = await getFilesFromMain(mainPath, projectName, settings)
-		const outputName = outputSpecification.outputName
-		const outputFiles = outputSpecification.outputFiles
-		const filesContents = await readFiles(outputFiles, projectName, settings)
-		const latexContent = processLatexFromFiles(filesContents)
-		await writeToTexFile(outputName, projectName, latexContent, settings)
-		return outputName
-	} catch (error) {
-		throw error
-	}
+	const mainPath: string = 'compile/'+projectNumber+'_main'
+	const outputSpecification: OutputSpecification = await getFilesFromMain(mainPath, projectName, settings)
+	const outputName = outputSpecification.outputName
+	const outputFiles = outputSpecification.outputFiles
+	const filesContents = await readFiles(outputFiles, projectName, settings)
+	const latexContent = processLatexFromFiles(filesContents)
+	await writeToTexFile(outputName, projectName, latexContent, settings)
+	return outputName
 }
 
 /**
@@ -92,13 +88,9 @@ function processLatexFromFiles(filesContents: string[]): string {
 	if (filesContents.length == 0) {
 		throw new Error("No file contents to extract Latex from.")
 	}
-	try {
-		return filesContents.map(
-			content => findLatexBlocks(content.split("\n"), 0, "")
-		).join("\n")
-	} catch(error) {
-		throw error
-	}
+	return filesContents.map(
+		content => findLatexBlocks(content.split("\n"), 0, "")
+	).join("\n")
 }
 
 /**

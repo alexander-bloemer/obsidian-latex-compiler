@@ -1,5 +1,4 @@
 import {
-	App,
 	FileSystemAdapter,
 	Notice,
 	setIcon,
@@ -19,8 +18,6 @@ export async function compileLatex(outputName: string, projectName: string, sett
 	if (vaultPath == null) {
 		throw new Error('The plugin does not work on the mobile version (yet). Sorry!')
 	}
-	const configDirectory = this.app.vault.configDirectory
-	const pluginPath = `${vaultPath}/${configDirectory}/plugins/obsidian-latex`
 	const compilePath = `${vaultPath}/${settings.projectsFolder}/${projectName}/compile`
 
 	const cd = `cd ${compilePath}`
@@ -33,7 +30,7 @@ export async function compileLatex(outputName: string, projectName: string, sett
 
 	const command = cd + " & " + cmdCompile + " & " + cmdPDF
 
-	const childProcess = await exec(command, (error, stdout, stderr) => {
+	const childProcess = exec(command, (error, stdout, stderr) => {
 		if (error) {
 			new Notice(`There was an error when executing the system command.`)
 			return
@@ -75,7 +72,7 @@ function getVaultPath(): string|null {
  * @param processTerminator The callback function to kill the process.
  * @return
  */
-function createRequestTerminatingButton(notice: Notice, processTerminator: any) {
+function createRequestTerminatingButton(notice: Notice, processTerminator: () => void): void {
 	// @ts-ignore Notice.noticeEl belongs to Obsidian's PRIVATE API, and it may change without a prior notice. Only
 	// create the button if noticeEl exists and is an HTMLElement.
 	const noticeEl = notice.noticeEl;

@@ -29,7 +29,7 @@ export class LatexCompilerSettingTab extends PluginSettingTab {
 		// add setting tab for simple vs. extended compiling
 		new Setting(containerEl)
 			.setName('Simple or extended compiling?')
-			.setDesc('With extended compiling, the compiler follows the extended (latex+bibtex+latex+latex) instead of the simple (latex) compiling procedure. Extended is recommended.')
+			.setDesc('With extended compiling, the compiler follows the extended (latex, bibtex, latex, latex) instead of the simple (latex) compiling procedure. Extended is recommended.')
 			.addDropdown(dropDown => {
 				dropDown.addOption('simple', 'Simple')
 				dropDown.addOption('extended', 'Extended')

@@ -32,7 +32,7 @@ function getProjectNumberFromCurrentFile(app: App): string {
 		const nameParts: string[] = currentNote.basename.split('_')
 		return nameParts[0]
 	} catch (error) {
-		throw new Error("Extracting the project number from current file was not possible.")
+		throw new Error("Extracting the project number from current file was not possible:" + error)
 	}
 }
 
